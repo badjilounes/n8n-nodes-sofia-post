@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1
+
+- Create: a media URL that is not a full address is refused by name, before Sofia is called.
+- First release published through npm trusted publishing (OIDC), with provenance.
+
 ## 0.1.0
 
 - Sofia API credential, with a personal key.

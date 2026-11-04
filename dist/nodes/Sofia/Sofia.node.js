@@ -109,7 +109,7 @@ function pathnameOf(url) {
   try {
     return new URL(url).pathname.toLowerCase();
   } catch {
-    throw new PostInputError(`\xAB ${url} \xBB is not a media address: it must start with https://.`);
+    throw new PostInputError(`\xAB ${url} \xBB is not a full media address (https://\u2026).`);
   }
 }
 function inferMediaType(url) {

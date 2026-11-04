@@ -3,10 +3,10 @@
 # builds, tests and lints the node, then pushes the result here with a `<version>` tag (ADR 0625 of
 # the monorepo).
 #
-# The first version is published with an `NPM_TOKEN` secret (a granular token on this package):
+# The first version is published with an `NPM_TOKEN` secret (a granular token that bypasses 2FA):
 # npm only lets a Trusted Publisher be set on a package that exists. Then, on npmjs.com, package ›
 # Settings › Trusted Publishers › GitHub Actions, with owner `badjilounes`, repository
-# `n8n-nodes-sofia-post`, workflow `publish.yml`, and delete the secret: npm uses OIDC. Both ways
+# `n8n-nodes-sofia-post`, workflow `publish.yml`, « Allow npm publish », and delete the secret: npm uses OIDC. Both ways
 # sign the provenance statement.
 
 name: Publish
