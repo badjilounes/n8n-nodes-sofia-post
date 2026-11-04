@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-sofia-post",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Sofia for n8n: publish, schedule and follow your social media posts from any workflow.",
   "license": "MIT",
   "homepage": "https://www.sofia-post.com/developers",
