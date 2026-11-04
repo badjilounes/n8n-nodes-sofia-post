@@ -1,0 +1,45 @@
+{
+  "name": "n8n-nodes-sofia-post",
+  "version": "0.1.0",
+  "description": "Sofia for n8n: publish, schedule and follow your social media posts from any workflow.",
+  "license": "MIT",
+  "homepage": "https://www.sofia-post.com/developers",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "sofia",
+    "social media",
+    "instagram",
+    "facebook",
+    "linkedin",
+    "tiktok"
+  ],
+  "author": {
+    "name": "Sofia",
+    "email": "contact@sofia-post.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/badjilounes/n8n-nodes-sofia-post.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "strict": true,
+    "credentials": [
+      "dist/credentials/SofiaApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Sofia/Sofia.node.js",
+      "dist/nodes/SofiaTrigger/SofiaTrigger.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@n8n/node-cli": "0.55.4"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}

@@ -1,0 +1,54 @@
+# Publishes n8n-nodes-sofia-post to npm with a provenance statement, as n8n's verification requires
+# (since May 1 2026). This repository is the public mirror of the built package: the Sofia monorepo
+# builds, tests and lints the node, then pushes the result here with a `<version>` tag (ADR 0625 of
+# the monorepo).
+#
+# The first version is published with an `NPM_TOKEN` secret (a granular token on this package):
+# npm only lets a Trusted Publisher be set on a package that exists. Then, on npmjs.com, package ›
+# Settings › Trusted Publishers › GitHub Actions, with owner `badjilounes`, repository
+# `n8n-nodes-sofia-post`, workflow `publish.yml`, and delete the secret: npm uses OIDC. Both ways
+# sign the provenance statement.
+
+name: Publish
+
+on:
+  push:
+    tags:
+      - '*.*.*'
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: Publish to npm
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.1
+          registry-url: https://registry.npmjs.org
+
+      - name: Check the tag matches the package version
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          package_version="$(node -p "require('./package.json').version")"
+          if [[ "$package_version" != "$TAG" ]]; then
+            echo "Tag $TAG does not match the package version $package_version" >&2
+            exit 1
+          fi
+
+      # The package is already built: nothing is installed, so no install script ever runs with
+      # the identity npm trusts.
+      - name: Publish to npm
+        run: npm publish --provenance --access public --ignore-scripts
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
