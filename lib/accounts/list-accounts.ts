@@ -11,7 +11,7 @@ const PLATFORM_NAMES: Readonly<Record<string, string>> = {
   tiktok: 'TikTok',
 };
 
-/** « Instagram — @bistrot_lumiere »: what the user recognises in the dropdown. */
+/** "Instagram — @bistrot_lumiere": what the user recognises in the dropdown. */
 function labelOf(account: Fields): string {
   const platform = String(account['platform']);
   const handle = textOf(account, 'handle');

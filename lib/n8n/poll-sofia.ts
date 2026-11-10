@@ -16,9 +16,9 @@ type PollState = { query?: string; seenIds?: string[] };
 
 type PollOutput = INodeExecutionData[][] | null;
 
-/** n8n's poll contract: `null` means « nothing new », and the workflow does not start. */
+/** n8n's poll contract: `null` means "nothing new", and the workflow does not start. */
 function asItems(posts: readonly PostOutput[]): PollOutput {
-  // eslint-disable-next-line no-restricted-syntax -- API n8n : `poll` rend `null` quand rien n'est nouveau
+  // eslint-disable-next-line no-restricted-syntax -- n8n API: `poll` returns `null` when nothing is new
   return posts.length === 0 ? null : [posts.map((post) => ({ json: post as IDataObject }))];
 }
 
@@ -40,7 +40,7 @@ async function readPage(functions: IPollFunctions, query: ListPostsInput): Promi
 }
 
 /**
- * « Fetch Test Event » shows the latest post, so the user can map its fields; an active workflow
+ * "Fetch Test Event" shows the latest post, so the user can map its fields; an active workflow
  * only fires for posts it has not seen yet, and remembers the page in the workflow's static data.
  */
 export async function pollSofia(functions: IPollFunctions): Promise<PollOutput> {

@@ -46,7 +46,7 @@ async function runItem(
   return posts.map((post) => ({ json: post as IDataObject, pairedItem: { item: itemIndex } }));
 }
 
-/** One Sofia call per input item; with « Continue On Fail », a refused item becomes an error item. */
+/** One Sofia call per input item; with "Continue On Fail", a refused item becomes an error item. */
 export async function executeSofia(functions: IExecuteFunctions): Promise<INodeExecutionData[][]> {
   const api = await N8nSofiaApiGateway.connect(functions);
   const output: INodeExecutionData[] = [];

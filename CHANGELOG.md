@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.3
+
+- README: a worked example (create a scheduled post, read it, react to a failure), with inputs and outputs.
+- Code comments are all in English.
+
 ## 0.1.2
 
 - The repository now carries the TypeScript sources at its root (credentials/, nodes/, lib/), next to the built package, as n8n's verification expects.

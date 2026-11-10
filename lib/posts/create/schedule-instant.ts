@@ -23,7 +23,7 @@ function wallClockMs(instantMs: number, timeZone: string): number {
 }
 
 /**
- * n8n's date picker gives a wall-clock time without offset (« 2026-11-05T10:00:00 »), meant in the
+ * n8n's date picker gives a wall-clock time without offset ("2026-11-05T10:00:00"), meant in the
  * workflow's time zone; Sofia needs an instant. A value that already carries its offset is kept.
  */
 export function scheduleInstant(value: string, timeZone: string): string {
